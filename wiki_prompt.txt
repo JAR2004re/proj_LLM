@@ -5,18 +5,77 @@ You will receive:
 2) lead text
 3) section snippets (Education, Career, Awards, Personal life)
 
-Return ONE valid JSON object ONLY that matches the schema below EXACTLY.
-If a field is not present, use "" for strings, [] for lists, null for unknown ids, 0 for counts.
+Your task is to normalize ONLY the infobox_raw content into structured schema.
+
+CRITICAL RULE: infobox_normalized MUST be derived strictly from infobox_raw.
+Do NOT extract occupation, awards, education, or other structured fields from lead text or section snippets.
+
+Sections (lead, education, career, awards, personal_life) should be copied from input without normalization.
+
+Return ONE valid JSON object ONLY matching the schema EXACTLY.
+
+If a field is not present:
+- use "" for strings
+- use [] for arrays
+- use null for unknown ids
+- use 0 for counts
 
 Schema keys (exact):
-- title, page_id, url, last_updated, references_count
+- title
+- page_id
+- url
+- last_updated
+- references_count
 - infobox_raw
-- infobox_normalized: name, birth_date, death_date, birth_place, nationality, occupation[], known_for[], education[], alma_mater[], awards[], spouse[], children[], organizations[], website
-- sections: lead, education, career, awards, personal_life
+- infobox_normalized:
+    name
+    birth_date
+    death_date
+    birth_place
+    nationality
+    occupation[]
+    known_for[]
+    education[]
+    alma_mater[]
+    awards[]
+    spouse[]
+    children[]
+    organizations[]
+    website
+- sections:
+    lead
+    education
+    career
+    awards
+    personal_life
 
 Normalization rules:
-- occupation / awards / alma_mater / spouse / children / organizations / known_for must be arrays of strings.
-- Convert “Born” to birth_date + birth_place when possible.
-- Don’t invent facts.
-JSON only. No markdown.
-2
+
+1) occupation MUST be concise infobox occupations only.
+   Example correct:
+     ["Businessman", "Entrepreneur"]
+
+   Example incorrect:
+     ["CEO of Tesla", "Founder of SpaceX"]
+
+2) birth_date MUST be in YYYY-MM-DD format.
+
+3) birth_place MUST be "City, Country" format if available.
+
+4) nationality MUST match infobox nationality exactly.
+
+5) known_for MUST be concise items from infobox, not job descriptions.
+
+6) awards MUST contain only award names from infobox.
+
+7) website MUST contain official website only.
+
+8) NEVER infer or invent facts.
+
+9) NEVER extract structured infobox_normalized fields from career, lead, or other sections.
+
+10) infobox_normalized must reflect only infobox_raw information.
+
+Output valid JSON only.
+No explanations.
+No markdown.
