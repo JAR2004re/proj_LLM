@@ -1,18 +1,9 @@
 crawl4ai
 selenium
-seleniumwire
-bs4
+selenium-wire
+beautifulsoup4
 pydantic
-dotenv
-asyncio
-io
-os
-json
-gzip
-csv
+python-dotenv
 pandas
 requests
-datetime
-
-
 

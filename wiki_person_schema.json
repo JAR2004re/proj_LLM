@@ -1,0 +1,33 @@
+{
+  "title": "",
+  "page_id": null,
+  "url": "",
+  "last_updated": "",
+  "references_count": 0,
+
+  "infobox_raw": {},
+  "infobox_normalized": {
+    "name": "",
+    "birth_date": "",
+    "death_date": "",
+    "birth_place": "",
+    "nationality": "",
+    "occupation": [],
+    "known_for": [],
+    "education": [],
+    "alma_mater": [],
+    "awards": [],
+    "spouse": [],
+    "children": [],
+    "organizations": [],
+    "website": ""
+  },
+
+  "sections": {
+    "lead": "",
+    "education": "",
+    "career": "",
+    "awards": "",
+    "personal_life": ""
+  }
+}
